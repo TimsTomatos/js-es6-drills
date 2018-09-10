@@ -6,7 +6,9 @@
  * @return {Number}
  * 
  */
-var stringCount;
+var stringCount = function (str) {
+  return str.length;
+}
 
 /* #arrayLength
  *
@@ -15,7 +17,9 @@ var stringCount;
  * @param {Array}
  * @return {Number}
  */
-var arrayLength;
+var arrayLength = function (arr) {
+  return arr.length;
+}
 
 /* #countAll
  *
@@ -24,7 +28,19 @@ var arrayLength;
  * @param {Array}
  * @return {Number}
  */
-var countAll;
+
+
+var countAll = function (arr)  {
+    return arr.reduce(function (accum, curr) {
+      return accum + curr;  
+    
+      }, 0);
+    
+  
+}
+
+
+
 
 /* #countStrings
  *
@@ -33,7 +49,11 @@ var countAll;
  * @param {Array}
  * @return {Array}
  */
-var countStrings;
+var countStrings = function (arr) {
+    return arr.map(function (index) {
+      return index.length;
+    })
+};
 
 /* #countAllStrings
  *
@@ -42,7 +62,17 @@ var countStrings;
  * @param {String}
  * @return {Number}
  */
-var countAllStrings;
+var countAllStrings = function (arr) {
+  //console.log("arr:", arr);
+  return arr.reduce(function (accum, curr){
+    //console.log("accum:", accum);
+    //console.log("curr:", curr);
+    return curr.length + accum;
+  }, 0);
+}
+
+
+
 
 /* #splitString
  *
@@ -51,7 +81,9 @@ var countAllStrings;
  * @param {String}
  * @return {Array}
  */
-var splitString;
+var splitString = function (arr) {
+    return arr.split("");
+}; 
 
 /* #lengthOfLast
  *
@@ -60,7 +92,11 @@ var splitString;
  * @param {String}
  * @return {Number}
  */
-var lengthOfLast;
+
+var lengthOfLast = function (arr) {
+    return arr[2].length;
+    console.log(arr);
+}
 
 /* #sumBelowTen
  *
@@ -69,7 +105,23 @@ var lengthOfLast;
  * @param {Array}
  * @return {Number}
  */
-var sumBelowTen;
+
+// arr=[1,2,11]
+
+//1
+//3
+
+var sumBelowTen = function (arr) {
+  return arr.reduce(function (accum, curr) {
+    if (curr <= 10) {
+      return accum + curr;
+    }
+    else {
+      return accum;
+    }
+  }, 0); 
+}
+
 
 /* #moreThanTenLetters
  *
@@ -78,7 +130,25 @@ var sumBelowTen;
  * @param {String}
  * @return {Number}
  */
-var moreThanTenLetters;
+
+
+ var moreThanTenLetters = function(arr) {
+   return arr.reduce(function (accum, curr) {
+    if (curr.length > 10) {
+      return accum + 1;
+    }
+    else {
+      return accum;
+    }
+   }, 0)
+ }
+ 
+//  function (arr) {
+//     return arr.filter(function (letters) {
+//      return letters.length > 10;
+//    })
+//  }
+
 
 /* #multiplyAll
  *
@@ -87,7 +157,11 @@ var moreThanTenLetters;
  * @param {Array}
  * @return {Number}
  */
-var multiplyAll;
+var multiplyAll = function (arr) {
+  return arr.reduce(function (accum, curr) {
+    return accum * curr;
+  })
+};
 
 /* #sumAllPositive
  *
@@ -96,7 +170,16 @@ var multiplyAll;
  * @param {String}
  * @return {Number}
  */
-var sumAllPositive;
+var sumAllPositive = function (arr) {
+  return arr.reduce(function (accum, curr) {
+    if (curr >= 0) {
+      return accum + curr;
+    }
+    else {
+      return accum;
+    }
+  }, 0)
+};
 
 /* #stringCountBelowThree
  *
@@ -105,7 +188,17 @@ var sumAllPositive;
  * @param {Array}
  * @return {Number}
  */
-var stringCountBelowThree;
+var stringCountBelowThree = function (arr) {
+  return arr.reduce(function (accum, curr) {
+    if (curr.length <= 3) {
+      return accum + 1;
+    }
+    else {
+      return accum;
+    }
+  }, 0)
+};
+
 
 /* #doubleArray
  *
@@ -114,7 +207,11 @@ var stringCountBelowThree;
  * @param {Array} // [1,2,3]
  * @return {Array} // [2,4,6]
  */
-var doubleArray;
+var doubleArray = function (arr) {
+  return arr.map(function(index) {
+    return index * 2;
+  })
+}
 
 /* #countObjects
  *
@@ -124,19 +221,25 @@ var doubleArray;
  * @return {Number}
  */
 
+ var countObjects = function (arr) {
+   console.log(arr);
+   return arr.length
+  }
+
+
 module.exports = {
-  stringCount: null,
-  arrayLength: null,
-  countAll: null,
-  countStrings: null,
-  countAllStrings: null,
-  splitString: null,
-  lengthOfLast: null,
-  sumBelowTen: null,
-  moreThanTenLetters: null,
-  multiplyAll: null,
-  sumAllPositive: null,
-  stringCountBelowThree: null,
-  doubleArray: null,
-  countObjects: null
+  stringCount: stringCount,
+  arrayLength: arrayLength,
+  countAll: countAll,
+  countStrings: countStrings,
+  countAllStrings: countAllStrings,
+  splitString: splitString,
+  lengthOfLast: lengthOfLast,
+  sumBelowTen: sumBelowTen,
+  moreThanTenLetters: moreThanTenLetters,
+  multiplyAll: multiplyAll,
+  sumAllPositive: sumAllPositive,
+  stringCountBelowThree: stringCountBelowThree,
+  doubleArray: doubleArray,
+  countObjects: countObjects
 };
